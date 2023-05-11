@@ -1,6 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   ImageBackground,
   StyleSheet,
@@ -8,6 +7,9 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,Keyboard
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { LoginScreen } from './Screens/LoginScreen';
@@ -29,13 +31,18 @@ export default function App() {
     setShowPassword(!showPassword);
   };
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        style={styles.bg}
-        source={require('./assets/images/photo-bg.jpg')}
-      >
-        {/* <RegistrationScreen /> */}
-        <View style={styles.form}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <ImageBackground
+          style={styles.bg}
+          source={require('./assets/images/photo-bg.jpg')}
+        >
+          {/* <KeyboardAvoidingView
+          behavior={(Platform.OS = 'ios' ? 'padding' : 'height')}
+        > */}
+          <RegistrationScreen />
+          {/* <LoginScreen/> */}
+          {/* <View style={styles.form}>
           <View style={styles.avaWrapper}>
             <View style={styles.addBtn}>
               <AntDesign name="pluscircleo" size={25} color="#FF6C00" />
@@ -64,47 +71,18 @@ export default function App() {
               </Text>
             </TouchableOpacity>
           </View>
-          {/* <TextInput
-            style={styles.input}
-            placeholder="Пароль"
-            secureTextEntry={true}
-            onChangeText={text => setPassword(text)}
-            leftIcon={
-              <Icon
-                name="lock"
-                size={24}
-                color="#000000"
-                style={{ marginRight: 10 }}
-              />
-            }
-            rightIcon={
-              <TouchableOpacity onPress={toggleShowPassword}>
-                <>
-                  <Icon
-                    name={showPassword ? 'eye-slash' : 'eye'}
-                    size={24}
-                    color="#000000"
-                  />
-                  <Text>{showPassword ? 'Скрыть' : 'Показать'}</Text>
-                </>
-              </TouchableOpacity>
-            }
-          /> */}
-          {/* <View>
-            <TouchableOpacity style={styles.show}>
-              <Text style={styles.linkText}>Показать</Text>
-            </TouchableOpacity>
-          </View> */}
           <TouchableOpacity style={styles.btn}>
             <Text style={styles.btnTitle}>Зарегистрироваться</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.link}>
             <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
           </TouchableOpacity>
-        </View>
-        <StatusBar style="auto" />
-      </ImageBackground>
-    </View>
+        </View> */}
+          <StatusBar style="auto" />
+          {/* </KeyboardAvoidingView> */}
+        </ImageBackground>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
@@ -119,24 +97,21 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'flex-end',
+    // justifyContent: 'center',
     // alignItems: 'center',
   },
   //RegistrationScreen styles:
   form: {
-    // position: 'relative',
     backgroundColor: '#fff',
     borderRadius: 25,
     flex: 0.7,
-    // width: 375,
-    // height: 549,
-    // alignItems: 'center',
     justifyContent: 'center',
   },
   avaWrapper: {
     position: 'absolute',
     width: 120,
     height: 120,
-    backgroundColor: '#00ffff',
+    backgroundColor: '#F6F6F6',
     borderRadius: 16,
     top: 0,
     left: '50%',
@@ -152,7 +127,7 @@ const styles = StyleSheet.create({
     height: 25,
     right: 0,
     bottom: 12,
-    transform:[{translateX:12.5}]
+    transform: [{ translateX: 12.5 }],
   },
   title: {
     fontSize: 30,
@@ -173,7 +148,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
     marginHorizontal: 16,
-    // position: 'relative',
   },
   btn: {
     backgroundColor: '#FF6C00',
