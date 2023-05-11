@@ -4,9 +4,9 @@ export const LoginScreen = () => {
     return (
       <View>
         <Text>Войти</Text>
-        <TextInput />
-        <TextInput />
-        <Button text="Войти"/>
+        <TextInput placeholder="Адрес электронной почты" />
+        <TextInput placeholder="Пароль" secureTextEntry={true} />
+        <Button text="Войти" />
       </View>
     );
 }
