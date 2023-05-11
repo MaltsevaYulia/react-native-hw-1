@@ -15,6 +15,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { LoginScreen } from './Screens/LoginScreen';
 // import { useFonts } from 'expo-font';
 import { RegistrationScreen } from './Screens/RegistrationScreen';
+import { PostsScreen } from './Screens/PostsScreen';
 
 export default function App() {
   //  const [fontsLoaded] = useFonts({
@@ -40,8 +41,9 @@ export default function App() {
           {/* <KeyboardAvoidingView
           behavior={(Platform.OS = 'ios' ? 'padding' : 'height')}
         > */}
-          <RegistrationScreen />
-          {/* <LoginScreen/> */}
+          {/* <RegistrationScreen /> */}
+          {/* <LoginScreen /> */}
+          <PostsScreen/>
           {/* <View style={styles.form}>
           <View style={styles.avaWrapper}>
             <View style={styles.addBtn}>

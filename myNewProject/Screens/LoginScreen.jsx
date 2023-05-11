@@ -4,7 +4,6 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
-  
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import React, { useState } from 'react';
@@ -12,21 +11,48 @@ import React, { useState } from 'react';
 export const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [isFocusedEmail, setIsFocusedEmail] = useState(false);
+  const [isFocusedPass, setIsFocusedPass] = useState(false);
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+  const handleFocusEmail = () => setIsFocusedEmail(true);
+  const handleBlurEmail = () => setIsFocusedEmail(false);
+  const handleFocusPass = () => setIsFocusedPass(true);
+  const handleBlurPass = () => setIsFocusedPass(false);
+
+  const inputStyleEmail = {
+    ...styles.input,
+    borderColor: isFocusedEmail ? '#FF6C00' : '#E8E8E8',
+  };
+
+  const inputStyleEPass = {
+    ...styles.passwordContainer,
+    borderColor: isFocusedPass ? '#FF6C00' : '#E8E8E8',
+  };
+
   return (
     <View style={styles.form}>
       <Text style={styles.title}>Войти</Text>
-      <TextInput style={styles.input} placeholder="Адрес электронной почты" />
-      <View style={styles.passwordContainer}>
+      <TextInput
+        style={inputStyleEmail}
+        placeholder="Адрес электронной почты"
+        placeholderTextColor="#BDBDBD"
+        onFocus={handleFocusEmail}
+        onBlur={handleBlurEmail}
+      />
+      <View style={inputStyleEPass}>
         <TextInput
           style={styles.passText}
           placeholder="Пароль"
+          placeholderTextColor="#BDBDBD"
           secureTextEntry={!showPassword}
           value={password}
           onChangeText={text => setPassword(text)}
+          onFocus={handleFocusPass}
+          onBlur={handleBlurPass}
         />
         <TouchableOpacity
           onPress={toggleShowPassword}
@@ -51,7 +77,8 @@ const styles = StyleSheet.create({
   //RegistrationScreen styles:
   form: {
     backgroundColor: '#fff',
-    borderRadius: 25,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
     flex: 0.6,
     justifyContent: 'center',
   },
@@ -92,7 +119,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 16,
     backgroundColor: '#F6F6F6',
-    color: '#BDBDBD',
+    color: '#212121',
     fontSize: 16,
     lineHeight: 19,
     marginHorizontal: 16,
@@ -138,7 +165,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   passText: {
-    color: '#BDBDBD',
+    color: '#212121',
     fontSize: 16,
     lineHeight: 19,
   },

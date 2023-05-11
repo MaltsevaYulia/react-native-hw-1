@@ -51,12 +51,14 @@ export const RegistrationScreen = () => {
       <TextInput
         style={inputStyleLog}
         placeholder="Логин"
+        placeholderTextColor="#BDBDBD"
         onFocus={handleFocusLog}
         onBlur={handleBlurLog}
       />
       <TextInput
         style={inputStyleEmail}
         placeholder="Адрес электронной почты"
+        placeholderTextColor="#BDBDBD"
         onFocus={handleFocusEmail}
         onBlur={handleBlurEmail}
       />
@@ -64,6 +66,7 @@ export const RegistrationScreen = () => {
         <TextInput
           style={styles.passText}
           placeholder="Пароль"
+          placeholderTextColor="#BDBDBD"
           secureTextEntry={!showPassword}
           value={password}
           onChangeText={text => setPassword(text)}
@@ -93,7 +96,8 @@ const styles = StyleSheet.create({
   //RegistrationScreen styles:
   form: {
     backgroundColor: '#fff',
-    borderRadius: 25,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
     flex: 0.7,
     justifyContent: 'center',
   },
@@ -134,7 +138,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 16,
     backgroundColor: '#F6F6F6',
-    placeholderTextColor: '#BDBDBD',
+    // placeholderTextColor: '#BDBDBD',
     color: '#212121',
     fontSize: 16,
     lineHeight: 19,
@@ -181,7 +185,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   passText: {
-    color: '#BDBDBD',
+    color: '#212121',
     fontSize: 16,
     lineHeight: 19,
   },
