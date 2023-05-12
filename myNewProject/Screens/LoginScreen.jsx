@@ -58,7 +58,7 @@ export const LoginScreen = () => {
           onPress={toggleShowPassword}
           style={styles.passwordToggle}
         >
-          <Text style={styles.linkText}>
+          <Text style={styles.show}>
             {showPassword ? 'Скрыть' : 'Показать'}
           </Text>
         </TouchableOpacity>
@@ -79,35 +79,36 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    flex: 0.6,
+    // flex: 0.6,
     justifyContent: 'center',
   },
-  avaWrapper: {
-    position: 'absolute',
-    width: 120,
-    height: 120,
-    backgroundColor: '#F6F6F6',
-    borderRadius: 16,
-    top: 0,
-    left: '50%',
-    transform: [{ translateX: -60 }, { translateY: -60 }],
-  },
-  addBtn: {
-    position: 'absolute',
-    // borderColor: '#FF6C00',
-    // borderRadius: '50%',
-    // borderWidth: 1,
-    // backgroundColor: '#FFFFFF',
-    width: 25,
-    height: 25,
-    right: 0,
-    bottom: 12,
-    transform: [{ translateX: 12.5 }],
-  },
+  // avaWrapper: {
+  //   position: 'absolute',
+  //   width: 120,
+  //   height: 120,
+  //   backgroundColor: '#F6F6F6',
+  //   borderRadius: 16,
+  //   top: 0,
+  //   left: '50%',
+  //   transform: [{ translateX: -60 }, { translateY: -60 }],
+  // },
+  // addBtn: {
+  //   position: 'absolute',
+  //   // borderColor: '#FF6C00',
+  //   // borderRadius: '50%',
+  //   // borderWidth: 1,
+  //   // backgroundColor: '#FFFFFF',
+  //   width: 25,
+  //   height: 25,
+  //   right: 0,
+  //   bottom: 12,
+  //   transform: [{ translateX: 12.5 }],
+  // },
   title: {
     fontSize: 30,
     fontWeight: 500,
     color: '#212121',
+    marginTop: 32,
     marginBottom: 32,
     textAlign: 'center',
   },
@@ -141,11 +142,11 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
   show: {
-    position: 'absolute',
-    zIndex: 1,
-    // top: '50%',
-    right: 0,
+    fontSize: 16,
+    lineHeight: 19,
+    color: '#1B4371',
   },
+  link:{marginBottom:111,},
   linkText: {
     fontSize: 16,
     lineHeight: 19,
@@ -168,5 +169,6 @@ const styles = StyleSheet.create({
     color: '#212121',
     fontSize: 16,
     lineHeight: 19,
+    
   },
 });

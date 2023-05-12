@@ -77,7 +77,7 @@ export const RegistrationScreen = () => {
           onPress={toggleShowPassword}
           style={styles.passwordToggle}
         >
-          <Text style={styles.linkText}>
+          <Text style={styles.show}>
             {showPassword ? 'Скрыть' : 'Показать'}
           </Text>
         </TouchableOpacity>
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    flex: 0.7,
+    // flex: 0.7,
     justifyContent: 'center',
   },
   avaWrapper: {
@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 500,
     color: '#212121',
+    marginTop: 92,
     marginBottom: 32,
     textAlign: 'center',
   },
@@ -161,20 +162,21 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
   show: {
-    position: 'absolute',
-    zIndex: 1,
-    // top: '50%',
-    right: 0,
+    fontSize: 16,
+    lineHeight: 19,
+    color: '#1B4371',
   },
   linkText: {
     fontSize: 16,
     lineHeight: 19,
     color: '#1B4371',
     textAlign: 'center',
+    marginBottom: 45,
   },
   passwordContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'base-line',
+    justifyContent: 'space-between',
     borderWidth: 1,
     borderColor: '#E8E8E8',
     borderRadius: 8,
@@ -182,7 +184,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F6F6F6',
     marginHorizontal: 16,
     marginBottom: 12,
-    justifyContent: 'space-between',
   },
   passText: {
     color: '#212121',

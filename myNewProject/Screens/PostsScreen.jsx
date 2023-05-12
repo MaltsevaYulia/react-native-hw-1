@@ -1,43 +1,55 @@
-import { View,Text } from "react-native"
-import { AntDesign,Feather } from '@expo/vector-icons'; 
-import { StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity } from 'react-native';
+import { AntDesign, Feather } from '@expo/vector-icons';
+import { StyleSheet } from 'react-native';
 
 export const PostsScreen = () => {
-    return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Text>Публикации</Text>
-          <Feather name="log-out" size={24} color="black" />
-        </View>
-        <View style={styles.main}></View>
-        <View style={styles.footer}>
-          <Feather name="grid" size={24} color="black" />
-          <AntDesign name="plus" size={24} color="black" />
-          <Feather name="user" size={24} color="black" />
-        </View>
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Публикации</Text>
+        <Feather name="log-out" size={24} color="#BDBDBD" />
       </View>
-    );
-}
+      <View style={styles.main}></View>
+      <View style={styles.footer}>
+        <Feather name="grid" size={24} color="#212121" />
+        <TouchableOpacity style={styles.btn}>
+          <AntDesign name="plus" size={24} color="#FFFFFF" />
+        </TouchableOpacity>
+        <Feather name="user" size={24} color="#212121" />
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
+  container: {
+    flex: 1,
+  },
   header: {
     // height: 44,
-      flex:0.1,
+    flex: 0.1,
     backgroundColor: '#fff',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     justifyContent: 'center',
     gap: 31,
-    },
-    main: {
-        flex:0.8,
-    },
+    borderBottomWidth: 1,
+    borderBottomColor: '#E8E8E8',
+    paddingBottom: 10,
+  },
+  title: {
+    fontSize: 17,
+    fontWeight: 500,
+    lineHeight: 22,
+    color: '#212121',
+  },
+  main: {
+    flex: 0.8,
+    backgroundColor: '#fff',
+  },
   footer: {
     // height: 83,
-      flex: 0.1,
+    flex: 0.1,
     backgroundColor: '#fff',
     flexDirection: 'row',
     alignItems: 'center',
@@ -45,5 +57,13 @@ const styles = StyleSheet.create({
     gap: 31,
     borderTopWidth: 1,
     borderTopColor: '#E8E8E8',
+  },
+  btn: {
+    width: 70,
+    height: 40,
+    borderRadius:20,
+    backgroundColor: '#FF6C00',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
