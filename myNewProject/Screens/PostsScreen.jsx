@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { AntDesign, Feather } from '@expo/vector-icons';
 import { StyleSheet } from 'react-native';
 
@@ -7,9 +7,11 @@ export const PostsScreen = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Публикации</Text>
-        <Feather name="log-out" size={24} color="#BDBDBD" />
+        <View style={styles.iconContainer}>
+          <Feather name="log-out" size={24} color="#BDBDBD" />
+        </View>
       </View>
-      <View style={styles.main}></View>
+      <View style={styles.main}><Image/></View>
       <View style={styles.footer}>
         <Feather name="grid" size={24} color="#212121" />
         <TouchableOpacity style={styles.btn}>
@@ -30,18 +32,23 @@ const styles = StyleSheet.create({
     flex: 0.1,
     backgroundColor: '#fff',
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     justifyContent: 'center',
-    gap: 31,
+    // gap: 31,
     borderBottomWidth: 1,
     borderBottomColor: '#E8E8E8',
-    paddingBottom: 10,
+    // paddingBottom: 10,
   },
   title: {
+    fontFamily: 'Roboto-Medium',
     fontSize: 17,
     fontWeight: 500,
     lineHeight: 22,
     color: '#212121',
+  },
+  iconContainer: {
+    position: 'absolute',
+    right: 16,
   },
   main: {
     flex: 0.8,
@@ -61,7 +68,7 @@ const styles = StyleSheet.create({
   btn: {
     width: 70,
     height: 40,
-    borderRadius:20,
+    borderRadius: 20,
     backgroundColor: '#FF6C00',
     alignItems: 'center',
     justifyContent: 'center',

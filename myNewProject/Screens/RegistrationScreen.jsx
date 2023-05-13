@@ -4,11 +4,15 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import React, { useState } from 'react';
 
 export const RegistrationScreen = () => {
+  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isFocusedLog, setIsFocusedLog] = useState(false);
@@ -41,54 +45,63 @@ export const RegistrationScreen = () => {
     setShowPassword(!showPassword);
   };
   return (
-    <View style={styles.form}>
-      <View style={styles.avaWrapper}>
-        <View style={styles.addBtn}>
-          <AntDesign name="pluscircleo" size={25} color="#FF6C00" />
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset="-147"
+    >
+      <View style={styles.form}>
+        <View style={styles.avaWrapper}>
+          <View style={styles.addBtn}>
+            <AntDesign name="pluscircleo" size={25} color="#FF6C00" />
+          </View>
         </View>
-      </View>
-      <Text style={styles.title}>Регистрация</Text>
-      <TextInput
-        style={inputStyleLog}
-        placeholder="Логин"
-        placeholderTextColor="#BDBDBD"
-        onFocus={handleFocusLog}
-        onBlur={handleBlurLog}
-      />
-      <TextInput
-        style={inputStyleEmail}
-        placeholder="Адрес электронной почты"
-        placeholderTextColor="#BDBDBD"
-        onFocus={handleFocusEmail}
-        onBlur={handleBlurEmail}
-      />
-      <View style={inputStyleEPass}>
+        <Text style={styles.title}>Регистрация</Text>
         <TextInput
-          style={styles.passText}
-          placeholder="Пароль"
+          style={inputStyleLog}
+          placeholder="Логин"
           placeholderTextColor="#BDBDBD"
-          secureTextEntry={!showPassword}
-          value={password}
-          onChangeText={text => setPassword(text)}
-          onFocus={handleFocusPass}
-          onBlur={handleBlurPass}
+          value={login}
+          onChangeText={text => setLogin(text)}
+          onFocus={handleFocusLog}
+          onBlur={handleBlurLog}
         />
-        <TouchableOpacity
-          onPress={toggleShowPassword}
-          style={styles.passwordToggle}
-        >
-          <Text style={styles.show}>
-            {showPassword ? 'Скрыть' : 'Показать'}
-          </Text>
+        <TextInput
+          style={inputStyleEmail}
+          placeholder="Адрес электронной почты"
+          placeholderTextColor="#BDBDBD"
+          value={email}
+          onChangeText={text => setEmail(text)}
+          onFocus={handleFocusEmail}
+          onBlur={handleBlurEmail}
+        />
+        <View style={inputStyleEPass}>
+          <TextInput
+            style={styles.passText}
+            placeholder="Пароль"
+            placeholderTextColor="#BDBDBD"
+            secureTextEntry={!showPassword}
+            value={password}
+            onChangeText={text => setPassword(text)}
+            onFocus={handleFocusPass}
+            onBlur={handleBlurPass}
+          />
+          <TouchableOpacity
+            onPress={toggleShowPassword}
+            style={styles.passwordToggle}
+          >
+            <Text style={styles.show}>
+              {showPassword ? 'Скрыть' : 'Показать'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <TouchableOpacity style={styles.btn}>
+          <Text style={styles.btnTitle}>Зарегистрироваться</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.link}>
+          <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.btn}>
-        <Text style={styles.btnTitle}>Зарегистрироваться</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.link}>
-        <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
-      </TouchableOpacity>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -124,6 +137,7 @@ const styles = StyleSheet.create({
     transform: [{ translateX: 12.5 }],
   },
   title: {
+    fontFamily: 'Roboto-Medium',
     fontSize: 30,
     fontWeight: 500,
     color: '#212121',
@@ -141,6 +155,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F6F6F6',
     // placeholderTextColor: '#BDBDBD',
     color: '#212121',
+    fontFamily: 'Roboto-Regular',
+    fontWeight: 400,
     fontSize: 16,
     lineHeight: 19,
     marginHorizontal: 16,
@@ -157,16 +173,22 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
   },
   btnTitle: {
+    fontFamily: 'Roboto-Regular',
+    fontWeight: 400,
     fontSize: 16,
     lineHeight: 19,
     color: '#FFFFFF',
   },
   show: {
+    fontFamily: 'Roboto-Regular',
+    fontWeight: 400,
     fontSize: 16,
     lineHeight: 19,
     color: '#1B4371',
   },
   linkText: {
+    fontFamily: 'Roboto-Regular',
+    fontWeight: 400,
     fontSize: 16,
     lineHeight: 19,
     color: '#1B4371',
@@ -183,7 +205,7 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: '#F6F6F6',
     marginHorizontal: 16,
-    marginBottom: 12,
+    // marginBottom: 12,
   },
   passText: {
     color: '#212121',
