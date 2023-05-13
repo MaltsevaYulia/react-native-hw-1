@@ -11,7 +11,15 @@ export const PostsScreen = () => {
           <Feather name="log-out" size={24} color="#BDBDBD" />
         </View>
       </View>
-      <View style={styles.main}><Image/></View>
+      <View style={styles.main}>
+        <View style={styles.userWrapp}>
+          <Image source={require('../assets/images/user.jpg')} />
+          <View style={styles.userInfo}>
+            <Text style={styles.userName}>Natali Romanova</Text>
+            <Text style={styles.userEmail}>email@example.com</Text>
+          </View>
+        </View>
+      </View>
       <View style={styles.footer}>
         <Feather name="grid" size={24} color="#212121" />
         <TouchableOpacity style={styles.btn}>
@@ -53,6 +61,30 @@ const styles = StyleSheet.create({
   main: {
     flex: 0.8,
     backgroundColor: '#fff',
+    paddingTop: 32,
+    paddingHorizontal: 16,
+  },
+  userWrapp: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  userInfo: {
+    // alignItems: 'center',
+    justifyContent: 'center',
+  },
+  userName: {
+    fontFamily: 'Roboto-Bold',
+    fontWeight: 700,
+    fontSize: 13,
+    lineHeight: 15,
+    color: '#212121',
+  },
+  userEmail: {
+    fontFamily: 'Roboto-Regular',
+    fontWeight: 400,
+    fontSize: 11,
+    lineHeight: 13,
+    color: 'rgba(33, 33, 33, 0.8)',
   },
   footer: {
     // height: 83,
